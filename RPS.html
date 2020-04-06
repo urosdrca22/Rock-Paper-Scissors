@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<script>
+
+		let playerScore = 0;
+		let computerScore = 0;
+
+		function computerPlay()
+		{
+			let sign_array = ['Rock', 'Paper', 'Scissors'];
+			let random_sign = sign_array[Math.floor(Math.random() * sign_array.length)];
+			return random_sign.toLowerCase();
+		}
+	    function playerPlay(){
+	    	let playerChoice = prompt("Choose one: rock, paper or scissors:")
+	    	return playerChoice.toLowerCase();
+	    }
+		 
+			
+
+		function playRound(playerSelection, computerSelection)
+		{
+			while (playerScore < 5 && computerScore < 5)
+			{
+				if(playerSelection == computerSelection)
+			{
+				console.log("It's a tie! Play again.")
+				continue
+			}
+			else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection =="rock") || (playerSelection == "scissors" && computerSelection == "paper")) 
+			{
+				playerScore += 1
+				console.log("You win! ${playerSelection} beats ${computerSelection).")
+				continue
+			}
+			else
+			{	
+				computerScore += 1
+				console.log("You lose! ${computerSelection} beats ${playerSelection}.")
+				continue
+			}
+			}
+		}
+
+		playRound(playerPlay(), computerPlay())
+		
+	</script>
+</body>
+</html> 
