@@ -6,49 +6,70 @@
 </head>
 <body>
 	<script>
-
-		let playerScore = 0;
-		let computerScore = 0;
-
 		function computerPlay()
 		{
 			let sign_array = ['Rock', 'Paper', 'Scissors'];
 			let random_sign = sign_array[Math.floor(Math.random() * sign_array.length)];
 			return random_sign.toLowerCase();
 		}
-	    function playerPlay(){
+	    function playerPlay()
+	    {
 	    	let playerChoice = prompt("Choose one: rock, paper or scissors:")
 	    	return playerChoice.toLowerCase();
 	    }
-		 
-			
-
+	    
 		function playRound(playerSelection, computerSelection)
 		{
-			while (playerScore < 5 && computerScore < 5)
-			{
-				if(playerSelection == computerSelection)
-			{
-				console.log("It's a tie! Play again.")
-				continue
-			}
-			else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection =="rock") || (playerSelection == "scissors" && computerSelection == "paper")) 
-			{
-				playerScore += 1
-				console.log("You win! ${playerSelection} beats ${computerSelection).")
-				continue
-			}
-			else
-			{	
-				computerScore += 1
-				console.log("You lose! ${computerSelection} beats ${playerSelection}.")
-				continue
-			}
-			}
+			let winner = ""
+			if(playerSelection == computerSelection)
+				{
+					console.log("It's a tie! Play again.");
+				}
+				else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection =="rock") || (playerSelection == "scissors" && computerSelection == "paper")) 
+				{
+					console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+					winner = "Player";
+					console.log(`Winner: ${winner}`);
+				}
+				else
+				{	
+					console.log(`You lose! ${playerSelection} loses to ${computerSelection}.`);
+					winner = "Computer";
+					console.log(`Winner: ${winner}`);
+				}
+
+			return winner;
 		}
 
-		playRound(playerPlay(), computerPlay())
+		function playGame()
+		{
+
+		let playerScore = 0;
+		let compScore = 0;
 		
+		while (playerScore < 5 && compScore < 5) 
+		{
+			 winner = playRound(playerPlay(), computerPlay());
+			 if (winner == "Player")
+			 {
+			 	playerScore += 1;
+			 	continue;
+			 }
+			 else if (winner == "Computer")
+			 {
+			 	compScore += 1;
+			 	continue;
+			 }
+			 else
+			 {
+			 	continue;
+			 }
+		}
+	}
+
+	playGame();
+
+
 	</script>
 </body>
 </html> 
